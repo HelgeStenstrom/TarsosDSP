@@ -35,7 +35,8 @@ public class PitchDetectorTests {
 	@Test
 	public void testSine(){
 		float[] audioBuffer = TestUtilities.audioBufferSine();
-		for(PitchEstimationAlgorithm algorithm : PitchEstimationAlgorithm.values()){
+        final PitchEstimationAlgorithm[] pitchEstimationAlgorithms = PitchEstimationAlgorithm.values();
+        for(PitchEstimationAlgorithm algorithm : pitchEstimationAlgorithms){
 			PitchDetector detector = algorithm.getDetector(44100, 1024);
 			float pitch = 0;
 			float[] shortAudioBuffer = new float[1024];
@@ -61,7 +62,8 @@ public class PitchDetectorTests {
 	@Test
 	public void testFlute(){
 		float[] audioBuffer = TestUtilities.audioBufferFlute();
-		for(PitchEstimationAlgorithm algorithm : PitchEstimationAlgorithm.values()){
+        final PitchEstimationAlgorithm[] pitchEstimationAlgorithms = PitchEstimationAlgorithm.values();
+        for(PitchEstimationAlgorithm algorithm : pitchEstimationAlgorithms){
 			PitchDetector detector = algorithm.getDetector(44100, 1024);
 			float pitch = 0;
 			float[] shortAudioBuffer = new float[1024];
@@ -109,7 +111,8 @@ public class PitchDetectorTests {
 	@Test
 	public void testHighFlute(){
 		float[] audioBuffer = TestUtilities.audioBufferHighFlute();
-		for(PitchEstimationAlgorithm algorithm : PitchEstimationAlgorithm.values()){
+        final PitchEstimationAlgorithm[] pitchEstimationAlgorithms = PitchEstimationAlgorithm.values();
+        for(PitchEstimationAlgorithm algorithm : pitchEstimationAlgorithms){
 			PitchDetector detector = algorithm.getDetector(44100, 1024);
 			float pitch = 0;
 			float[] shortAudioBuffer = new float[1024];
