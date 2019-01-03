@@ -78,7 +78,7 @@ public class PitchProcessor implements AudioProcessor {
 		 * of a signal.
 		 */
 		AMDF;
-		
+
 		/**
 		 * Returns a new instance of a pitch detector object based on the provided values.
 		 * @param sampleRate The sample rate of the audio buffer.
@@ -87,19 +87,26 @@ public class PitchProcessor implements AudioProcessor {
 		 */
 		public PitchDetector getDetector(float sampleRate,int bufferSize){
 			PitchDetector detector;
-			if (this == MPM ) {
-				detector = new McLeodPitchMethod(sampleRate, bufferSize);
-			} else if(this == DYNAMIC_WAVELET ) {
-				detector = new DynamicWavelet(sampleRate,bufferSize);
-			} else if(this == FFT_YIN){
-				detector = new FastYin(sampleRate, bufferSize);
-			} else if(this==AMDF){
-				detector = new AMDF(sampleRate, bufferSize);
-			} else if (this == FFT_PITCH){
-				detector = new FFTPitch(Math.round(sampleRate),bufferSize);
-			} else {
-				detector = new Yin(sampleRate, bufferSize);
-			}
+            switch (this) {
+                case MPM:
+                    detector = new McLeodPitchMethod(sampleRate, bufferSize);
+                    break;
+                case DYNAMIC_WAVELET:
+                    detector = new DynamicWavelet(sampleRate, bufferSize);
+                    break;
+                case FFT_YIN:
+                    detector = new FastYin(sampleRate, bufferSize);
+                    break;
+                case AMDF:
+                    detector = new AMDF(sampleRate, bufferSize);
+                    break;
+//                case FFT_PITCH:
+//                    detector = new FFTPitch(Math.round(sampleRate), bufferSize);
+//                    break;
+                default:
+                    detector = new Yin(sampleRate, bufferSize);
+                    break;
+            }
 			return detector;
 		}
 		

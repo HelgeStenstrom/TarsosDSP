@@ -39,7 +39,7 @@ public class FFTPitch implements PitchDetector {
 
 	@Override
 	public PitchDetectionResult getPitch(float[] audioBuffer) {
-		
+	    // TODO: Use an FFT to calculate the pitch and set it to the result.
 		
 		return result;
 	}
