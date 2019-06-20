@@ -24,6 +24,9 @@
 package be.tarsos.dsp.pitch;
 
 
+import be.tarsos.dsp.util.fft.FFT;
+import be.tarsos.dsp.util.fft.HammingWindow;
+
 /**
  * Implements a pitch tracker by simply locating the most 
  * salient frequency component in a signal. 
@@ -40,7 +43,9 @@ public class FFTPitch implements PitchDetector {
 	@Override
 	public PitchDetectionResult getPitch(float[] audioBuffer) {
 	    // TODO: Use an FFT to calculate the pitch and set it to the result.
-		
+		final FFT fft = new FFT(audioBuffer.length, new HammingWindow());
+		fft.forwardTransform(audioBuffer);
+
 		return result;
 	}
 	
